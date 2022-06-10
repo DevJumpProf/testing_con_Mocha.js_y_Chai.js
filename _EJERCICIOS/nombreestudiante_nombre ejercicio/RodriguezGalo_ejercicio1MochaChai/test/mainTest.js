@@ -8,7 +8,7 @@ const resultadoResta = main.restar(4, 2); // 2
 const arrayNumeros = main.arrayNumeros(); // [0,1,2,3,4,5]
 const devuelveUnNumero = main.debeSerNumero(); // número
 const darTrue = main.debeSerVerdadero(); // true
-
+const SumarDos=main.sumaDosNumeros(5,5);
 
 describe("Main Suite", () => {
     describe("Hola Mundo-Test", () => {
@@ -49,6 +49,12 @@ describe("Main Suite", () => {
     describe("true - test", () => {
         it("devolver verdadero", () => {
             assert.isTrue(darTrue, "tu respuesta debe ser verdadera")
+        })
+    })
+
+    describe("sumar 2 numeros - test", ()=>{
+        it("resultado debe ser mayor a 9",()=>{
+            assert.isAbove(SumarDos,9,"no es mayor a 9");
         })
     })
 })

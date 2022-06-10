@@ -17,6 +17,10 @@ module.exports = {
 
     debeSerVerdadero : () => {
         return true;
+    },
+
+    sumaDosNumeros : (num1,num2) => {
+        return num1 + num2
     }
 }
 
