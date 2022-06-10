@@ -1,0 +1,20 @@
+{
+  "name": "mochachai",
+  "version": "1.0.0",
+  "description": "clase con ejemplos de mocha.js y chai.js",
+  "main": "main.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [
+    "mocha",
+    "chai",
+    "javascript"
+  ],
+  "author": "Galo Rodriguez",
+  "license": "ISC",
+  "dependencies": {
+    "chai": "*",
+    "mocha": "*"
+  }
+}
