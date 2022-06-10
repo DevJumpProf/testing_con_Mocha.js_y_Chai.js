@@ -1,5 +1,5 @@
 const assert = require ("chai").assert;
-const { arrayNumeros } = require("../main");
+/* const { arrayNumeros } = require("../main"); */
 const main = require ("../main");
 
 const textoHolaMundo = main.holaMundo();
@@ -8,9 +8,9 @@ const resultadoResta = main.restar(4,2);
 
 const arraysNumeros = main.arrayNumeros();
 
-const estrictoIgual = main.sonIguales(7,7);
+const estrictoIgual = main.sonIguales(7,8);
 
-const esMayorIgual = main.estrictoMayorIgual(3,6); 
+const sumaryMayor = main.sumarNros(2,2);
 
 describe ("Main Suite" , () => {
 
@@ -45,21 +45,22 @@ describe ("Main Suite" , () => {
 
         describe ("Números son Iguales - Test", () => {
             it("Es igual al número 7", () => {
-                assert.strictEqual(7,7,"es estrictamente igual")
-            });
-           /*  it ("Coincide con tipo de dato", () => {
-                assert.notStrictEqual(estrictoIgual,8,"No coinciden los datos, tienen que ser iguales")
-            }); */
-        }); 
+               assert.strictEqual(estrictoIgual,false,"es estrictamente igual")
+           });
+          it ("Coincide con tipo de dato", () => {
+               assert.notStrictEqual(estrictoIgual,true,"No coinciden los datos, tienen que ser iguales")
+           }); 
+       }); 
 
-        describe ("Número es Mayor - Test", () => {
-            it("El número es mayor a 3", () => {
-                assert.isAbove(6,3,"6 es mayor que 3")
-            });
-/* 
-            it ("Coincide los números", () =>{
-                assert.isAtLeast(3,3,"no es mayor a 6")
-            }); */
+       
+       describe ("Suma de números - Test", () => {
+        it("La suma es mayor a 4", () => {
+            assert.isAbove(sumaryMayor,3,"El numero tiene que ser mayor a 4")
         });
+
+        it ("Es la suma es igual a 4", () =>{
+            assert.isAtLeast(sumaryMayor,5,"El numero tiene que ser igual a 4")
+        });
+    });
     });
 
