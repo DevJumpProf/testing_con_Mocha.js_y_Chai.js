@@ -1,12 +1,14 @@
 
-## Testeando en Node.js usando Mocha y Chai
+<img  src='logo.png' height='70px'>
+
+# Lección 1: Intro a : Testear en Node.js usando Mocha y Chai
 
 * Node.js
 * Testear en Node.js usando Mocha y Chai
 * Mocha
 * Chai
 
-# Node.js
+## Node.js
 
 Node.js es un código abierto de JavaScript. Diseñado para generar apps web de forma altamente optimizada.
 Desde su lanzamiento por el año 2009 ha logrado convertirse en todo un must dentro del desarrollo web.

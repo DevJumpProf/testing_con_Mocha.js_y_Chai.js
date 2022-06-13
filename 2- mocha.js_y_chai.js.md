@@ -1,6 +1,6 @@
 <img  src='logo.png' height='70px'>
 
-# Lección 1: mocha.js y chai.js
+# Lección 2: mocha.js y chai.js
 
 * Mocha.js
 * Chai.js
@@ -11,8 +11,6 @@
 * Ejemplo / Ejercicio II
 * Terminos y traducciones utilizados en este Readme
 * Fuentes
-
-
 
 
   ## Mocha.js
