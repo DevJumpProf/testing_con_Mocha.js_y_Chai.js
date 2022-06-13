@@ -9,6 +9,7 @@
 * Describe
 * Ejemplo / Ejercicio I
 * Ejemplo / Ejercicio II
+* Assert - Expect - Should
 * Terminos y traducciones utilizados en este Readme
 * Fuentes
 
@@ -222,6 +223,11 @@ describe('Mathematical operations', () => {
 Las operaciones matemáticas están en la carpeta src/ un file app.js, el cual llamamos en los test para aplicar los test.
 
 Por ultimo solo nos queda ir a la terminal y correr el comando npm test y verificar que todos los test pasen, como dije antes mocha tiene otro tipo de estructuras que veremos mas adelante, para mas información podes visitar la documentación de mocha.
+
+## Assert - Expect - Should
+
+Para importar su funcionalidad: 
+var assert = require('chai').assert; -> se enfoca mas en el estilo para Tdd var expect = require('chai').expect; -> se enfoca mas en el estilo para Bdd var should = require('chai').should();-> se enfoca mas en el estilo para Bdd
 
 ## Ejercicio para Ejemplo II
 Crear los archivos correspondientes con operaciones y metodos para poder realizar el test del ejemplo II

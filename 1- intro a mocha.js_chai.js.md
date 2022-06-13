@@ -76,3 +76,4 @@ La propiedad should se agrega al Object.Prototype, para que todos los objetos pu
  
 
 En los procesos de desarrollo de cualquier producto con expectativas de satisfacer al público objetivo siempre ha existido una fase de pruebas o testeo para comprobar su funcionalidad.  Como expertos en transformación digital, reconocemos que realizar pruebas es algo imprescindible. Nos permite garantizas que las apps cumplen con las funcionalidades que se esperan de ellas y superan las expectativas de calidad, no solo de código. El poder identificar los errores y defectos permite reducir los costes del desarrollo y afianzar a los clientes al evitar molestos errores en las soluciones digitales desarrolladas.
+
