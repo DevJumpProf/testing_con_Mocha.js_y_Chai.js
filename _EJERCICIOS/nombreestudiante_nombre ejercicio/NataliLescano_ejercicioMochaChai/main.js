@@ -18,5 +18,10 @@ module.exports={
     
      estrictoMayorIgual : (num1,num2) => {
         return num1>=num2
-    } 
+    },
+
+    sumarNros : (num1,num2) => {
+        return num1+num2
+    }
+
     }
