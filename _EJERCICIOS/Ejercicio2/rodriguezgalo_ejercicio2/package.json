@@ -1,0 +1,21 @@
+{
+  "name": "mochachai",
+  "version": "1.0.0",
+  "description": "ejercicio 2 mocha.js y chai.js",
+  "main": "ejercicio2.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [
+    "mocha",
+    "chai",
+    "javascript"
+  ],
+  "author": "Galo Rodriguez",
+  "license": "ISC",
+  "dependencies": {
+    "chai": "*",
+    "mocha": "*",
+    "y": "^0.3.2"
+  }
+}
