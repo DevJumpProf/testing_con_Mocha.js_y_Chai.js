@@ -76,7 +76,7 @@ describe ("Area del triangulo Should", () => {
     });
 
     it ("Area del triangulo en String", () => {
-        ('area').should.to.be.a('string')
+        ('area').should.have.a('string')
     })
 });
 
