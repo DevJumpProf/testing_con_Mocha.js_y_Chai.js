@@ -1,0 +1,16 @@
+{
+  "name": "beer_carolina",
+  "version": "1.0.0",
+  "description": "",
+  "main": "ejercicio2_Beer",
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chai": "*",
+    "mocha": "*"
+  }
+}

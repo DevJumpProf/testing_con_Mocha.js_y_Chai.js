@@ -20,7 +20,7 @@ describe("Main Suite", () =>{
     describe("Hola Mundo-Test",()=>{ 
 
         it ("Coincidencia de Texto", ()=>{
-            assert.equal(textoHolaMundo, "Hola Mundo", "Debe ser igual el string: Hola Mundo");//mensaje 
+            assert.equal(textoHolaMundo, "Holaa Mundo", "Debe ser igual el string: Hola Mundo");//mensaje 
         })  
 
         it ("Coincidencia tipo de Dato", ()=>{
