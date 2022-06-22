@@ -20,17 +20,17 @@ const area = main.areaTriangulo(10,5); // 10x5  50       50/2 25
 
  describe("Operation Main Suit - Test", () => {
 
-        it("Operacion suma", () => {
-            assert.isOk(sumar,"La suma es igual a 15");
+        it("Operacion es una suma", () => {
+            assert.isOk(sumar,'La suma es igual a 15');
         });
 
-        it("Operacion String", () => {
-             assert.isNotString(sumar,"No es un string")
+        it("Operacion es un String", () => {
+             assert.isString('sumar','Es un string')
         });
         
-        it ("Operacion Numero", () => {
+        it ("Operacion es un Numero", () => {
             assert.isNumber(sumar,'El resultado es en números')
-        })
+        });
 
  
 
@@ -68,17 +68,16 @@ el area del triangulo sea igual a 25
 describe ("Area del triangulo Should", () => {
 
     it ("Area del triangulo", () => {
-        (area).should.to.be.equal(25);
+        (area).should.to.be.equal(25)
     });
 
     it ("Area del triangulo en Numero", () => {
-        (area).should.to.be.a('number');
+        (area).should.to.be.a('number')
     });
 
     it ("Area del triangulo en String", () => {
-        ('area').should.to.be.a('string');
-    });
-
+        ('area').should.to.be.a('string')
+    })
 });
 
 }); 
