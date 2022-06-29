@@ -93,7 +93,7 @@ describe("Resultado test array",()=>{
     it ("Es un array, incluye", ()=>{
         expect(arrayInfuciones).to.eql(["te","matecocido","cafe"]); //se puede con expect usando eql porque se usa 
         //como comparación
-        //un valor sólo es igual así mismo
+        //un valor sólo es igual así mismos
 
         //cada copia tiene su propia dirección en la memoria, la igualdad estricta de Javascript (y chai) las considera no iguales
     });

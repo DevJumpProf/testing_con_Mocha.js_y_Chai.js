@@ -12,5 +12,8 @@
   "dependencies": {
     "chai": "*",
     "mocha": "*"
+  },
+  "devDependencies": {
+    "@wdio/cli": "^7.20.5"
   }
 }
