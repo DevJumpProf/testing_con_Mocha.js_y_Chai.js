@@ -34,6 +34,9 @@ describe("Resultado Suma-Test",()=>{
 
 });
 
+
+
+
 describe("Resultado Area-triangulo Test",()=>{
 
     it ("Mayor o Igual a 25", ()=>{
@@ -42,6 +45,19 @@ describe("Resultado Area-triangulo Test",()=>{
 
 });
 
+
+describe("Resultado Array igual con assert",()=>{
+// no funciona con assert y equal 
+
+    // it ("es igual a lo esperado", ()=>{
+    //     assert.equal(arrayInfuciones, ["te","matecocido","cafe"], "No es igual al array"); //fail
+    // });
+
+    //con not equal debería saltar el mensaje y no pasar el test pero lo pasa
+    it ("es igual a lo esperado", ()=>{
+        assert.notEqual(arrayInfuciones, ["te","matecocido","cafe"], "No es igual al array"); //fail
+    });
+});
 
 
 
@@ -74,6 +90,15 @@ describe("Resultado test array",()=>{
         expect(arrayInfuciones).to.be.an('array').that.includes("cafe");  //que el array incluya "cafe"
     });
 
+    it ("Es un array, incluye", ()=>{
+        expect(arrayInfuciones).to.eql(["te","matecocido","cafe"]); //se puede con expect usando eql porque se usa 
+        //como comparación
+        //un valor sólo es igual así mismo
+
+        //cada copia tiene su propia dirección en la memoria, la igualdad estricta de Javascript (y chai) las considera no iguales
+    });
+    
+   
 });
 
 

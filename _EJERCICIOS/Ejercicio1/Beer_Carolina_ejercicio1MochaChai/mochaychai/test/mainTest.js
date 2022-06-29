@@ -53,6 +53,12 @@ describe("Main Suite", () =>{
         it ("Cantidad de Datos", ()=>{
             assert.lengthOf(arrayNumeros, 6, "El resultado tiene que tener 6 datos");//mensaje 
         });
+
+        // it ("Array es igual", ()=>{
+        //     assert.notEqual(arrayNumeros, [0,1,2,3,4,5], "El resultado no es menor a 5");//mensaje 
+        // });
+
+
        
 
     });
