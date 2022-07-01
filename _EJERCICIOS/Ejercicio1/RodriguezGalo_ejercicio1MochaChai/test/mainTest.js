@@ -1,4 +1,6 @@
 const assert = require("chai").assert;
+const expect = require ("chai").expect
+const should = require ("chai").should
 const main = require("../main");
 
 //resultados
