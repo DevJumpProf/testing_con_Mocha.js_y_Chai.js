@@ -14,13 +14,4 @@ admin
 
 https://webdriver.io/docs/gettingstarted/
 
-
-
-
-
-
-
-
-
-
-https://webdriver.io/docs/gettingstarted/
+https://www.youtube.com/watch?v=fnTvy_ZEcgM
