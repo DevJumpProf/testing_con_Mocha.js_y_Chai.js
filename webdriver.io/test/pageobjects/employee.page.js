@@ -6,7 +6,7 @@ class EmployeePage{
   
     get userNameHeader () {
         return $('//[@id="contentEmployee"]/h4/span');
-    }
+    }          
     get employeeNameInput () {
         return $('#name');
     }

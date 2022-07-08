@@ -7,7 +7,7 @@ describe('My Login application', () => {
          LoginPage.loginAs('admin', 'admin123');
     
 
-        expect(EmployeePage.userNameHeader).toHaveText('admin');
+        expect(EmployeePage.userNameHeader).toHaveTextContaining("admin");
     });
 });
 

@@ -5,7 +5,7 @@ describe('Employee', () => {
     it('should add employee', () => {
         browser.url('');
          LoginPage.loginAs('admin', 'admin123');
-         expect(EmployeePage.userNameHeader).toHaveText('admin');
+         expect(EmployeePage.userNameHeader).toHaveText('ss');
     
          EmployeePage.fillEmployeeForm('Marcos','RRZ','RRZ','Argentina','11500','marcos@gmail.com','115368554');
          EmployeePage.addEmployee();
