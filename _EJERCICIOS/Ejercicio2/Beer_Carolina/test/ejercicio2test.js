@@ -127,7 +127,7 @@ describe("Test array should",()=>{
  
     
 //     it ("largo indicado donde la propiedad es igual te", ()=>{
-// "arrayInfuciones".should.have.property('te').with.lengthOf(2);  // que el string del array contenga un largo igual a 2 
+// "arrayInfuciones".should.have.property(arrayInfuciones[0]).with.lengthOf(2);  // que el string del array contenga un largo igual a 2 
 // });
 
     
