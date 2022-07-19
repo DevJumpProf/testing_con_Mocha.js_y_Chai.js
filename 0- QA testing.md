@@ -1,13 +1,13 @@
 <img  src='logo.png' height='70px'>
 
 
-# Lección 0: QA testing
+    # Lección 0: QA testing
 
-* ¿Qué es un QA testing y cómo se hace?
-* ¿Qué es un QA testing?
-* Funciones de un QA tester
-* Tipos de QA tester
-* ¿Cómo se lleva a cabo el QA testing?
+    * ¿Qué es un QA testing y cómo se hace?
+    * ¿Qué es un QA testing?
+    * Funciones de un QA tester
+    * Tipos de QA tester
+    * ¿Cómo se lleva a cabo el QA testing?
 
 ## ¿Qué es un QA testing y cómo se hace?
 
