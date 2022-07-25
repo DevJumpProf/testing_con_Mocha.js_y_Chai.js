@@ -4,7 +4,7 @@ const LoginPage = require('../pageobjects/login.page');
 describe('Mi logueo en sauceDemo - Test', () => {
     it('Debería loguearse correctamente', () => {
         browser.url('https://www.saucedemo.com/');
-         LoginPage.loginAs('standard_user', 'secret_sauce');
+         LoginPage.loginAs('standard_user', 'secreuce');
 
          
   /*      expect(LoginPage).toExist('PRODUCTS');
