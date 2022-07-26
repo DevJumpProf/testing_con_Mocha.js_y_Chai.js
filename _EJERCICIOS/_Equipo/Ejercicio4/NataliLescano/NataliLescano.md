@@ -176,15 +176,15 @@ Fotos:
 
 ## Caso 7: Botón de comparación
 
--No se agrega en la lista de comparaciones
+-No se agrega en la lista de comparaciones.
 
 * Pasos a seguir:
 
--Dirigirse desde la página principal, hacer click en Phones & PDAs
+-Dirigirse desde la página principal, hacer click en Phones & PDAs.
 
--Elegir dos productos para comparar
+-Elegir dos productos para comparar.
 
--Click en el botón Product Compare()
+-Click en el botón Product Compare().
 
 Fotos:
 
@@ -204,11 +204,11 @@ Fotos:
 
 * Pasos a seguir:
 
--Click en My Acoount
+-Click en My Acoount.
 
--Click en Register
+-Click en Register.
 
--Hacer click en Privacy Policy
+-Hacer click en Privacy Policy.
 
 Fotos:
 
@@ -216,21 +216,21 @@ Fotos:
 
 ## Caso 9: No se carga la imagen y calendario.
 
--No se puede subir la imagen requerida
+-No se puede subir la imagen requerida.
 
--El calendario es repetitivo
+-El calendario es repetitivo.
 
--Al hacer click al botón "Add to Cart" no funciona
+-Al hacer click al botón "Add to Cart" no funciona.
 
 * Pasos a seguir:
 
--Click en el monitor Apple Cinema 30"
+-Click en el monitor Apple Cinema 30".
 
--Elegir las opciones
+-Elegir las opciones.
 
--Agregar los datos correspondientes
+-Agregar los datos correspondientes.
 
--Agregar una imagen desde el ordenador
+-Agregar una imagen desde el ordenador.
 
 -Elegir fecha,tiempo,cantidad.
 
@@ -252,12 +252,29 @@ Fotos:
 
 ## Caso 10: Caja desnivel
 
--La caja de Apple Cinema 30" es más grande que las demás
+-La caja de Apple Cinema 30" es más grande que las demás.
 
 <img  src='./img/prueba10.png' height='250px'>
 
 * Sugerencia:
 
--Debe ser el mismo tamaño que las demás
+-Debe ser el mismo tamaño que las demás.
 
--Podría agregar un caroussel
+-Podría agregar un caroussel.
+
+
+## Caso 11: Responsive
+
+-Las cajas se distorcionan cuando se trata de ser responsivo.
+  
+-En algunos dispositivos también se distorsiona.
+
+Fotos:
+
+<img  src='./img/prueba11.png' height='400px'>
+
+<img  src='./img/prueba11a.png' height='400px'>
+
+* Sugerencias:
+
+-Arreglar la parte del responsive en las mencionadas.
