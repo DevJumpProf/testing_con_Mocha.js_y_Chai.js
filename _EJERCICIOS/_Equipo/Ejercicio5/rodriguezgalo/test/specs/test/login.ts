@@ -19,5 +19,10 @@ describe('test logueo', () => {
         await $('#email').setValue('r8driguezgalo@gmail.com')
         await $('#phoneNumber').setValue('1167104514')
         await $('#addButton').click()
+
+        await expect($('#success-alert')).toExist()
+        await expect($('#success-alert')).toHaveText('Success! Employee added successfully.')
     })
 });
+
+// Success! Employee added successfully.
