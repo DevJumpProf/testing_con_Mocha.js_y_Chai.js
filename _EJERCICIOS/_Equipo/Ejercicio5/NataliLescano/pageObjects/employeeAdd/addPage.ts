@@ -1,5 +1,7 @@
 import { ChainablePromiseElement } from 'webdriverio';
 
+/* Aún no anda este método, lo seguiré verificando */
+
 import employeePageBase from './employeePageBase';
 
 class addPage extends employeePageBase{

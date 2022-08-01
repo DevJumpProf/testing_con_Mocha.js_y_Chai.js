@@ -1,6 +1,9 @@
 /* import { isRegularExpressionLiteral } from "typescript"; */
 import loginPage from "../../../pageObjects/loginPage/loginPage";
 
+
+/* Aún no anda este método, lo seguiré verificando */
+
 describe('Login Page Suite', () => {
     beforeEach(async () => {
         loginPage.open()

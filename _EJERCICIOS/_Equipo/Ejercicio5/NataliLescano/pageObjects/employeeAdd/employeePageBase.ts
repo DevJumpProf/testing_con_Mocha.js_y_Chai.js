@@ -2,6 +2,8 @@ import basePage from "../basePage"
 import { ChainablePromiseElement } from 'webdriverio';
        
 
+/* Aún no anda este método, lo seguiré verificando */
+
 /* Intentando a que vea el user, agregar y cerrar sesion */
 export default class employeePageBase extends basePage{
 
