@@ -12,9 +12,9 @@ describe('test logueo', () => {
 
     it("rellenar datos",async()=>{
         await $('#name').setValue('Galo')
-        await $('#address').setValue('libertad 839')
-        await $('//*[@id="gridEmployee"]/tbody/tr/td/form/fieldset/div[3]/div/div/input').setValue('moreno')
-        await $('#state').setValue('buenos aires')
+        await $('#address').setValue('Libertad 839')
+        await $('//*[@id="gridEmployee"]/tbody/tr/td/form/fieldset/div[3]/div/div/input').setValue('Moreno')
+        await $('#state').setValue('Buenos Aires')
         await $('#postcode').setValue('1744')
         await $('#email').setValue('r8driguezgalo@gmail.com')
         await $('#phoneNumber').setValue('1167104514')
