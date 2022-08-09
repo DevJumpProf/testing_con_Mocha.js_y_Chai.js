@@ -4,7 +4,7 @@ describe ('Pruebas de bugs - Main Suite', () => {
         await browser.url('https://academybugs.com/store/')
      })
 
-     it.only ('Crear cuenta', async () =>{
+     it ('Crear cuenta', async () =>{
 
         await $('//*[@id="login-from-side-menu"]/div[4]/p/a').scrollIntoView()
 
@@ -23,7 +23,7 @@ describe ('Pruebas de bugs - Main Suite', () => {
         await $('//*[@id="ec_account_register"]/div[1]/form/div[8]/input[2]').click()   
     })
 
-    it.only ('Iniciar sesión', async () =>{
+    it ('Iniciar sesión', async () =>{
         await $('//*[@id="ec_loginwidget-5"]/h4').scrollIntoView()
     
         await $('//*[@id="login-from-side-menu"]/div[4]/p/a').click()
@@ -34,7 +34,7 @@ describe ('Pruebas de bugs - Main Suite', () => {
 
     }) 
 
-    it.only ('9-La información del perfil no se actualiza', async () =>{
+    it('1-La información del perfil no se actualiza', async () =>{
 
         await $('//*[@id="ec_loginwidget-5"]/h4').scrollIntoView()
     
@@ -63,7 +63,19 @@ describe ('Pruebas de bugs - Main Suite', () => {
         await expect($('//*[@id="popmake-4406"]')).toBeDisplayedInViewport()
     }) 
 
-     it ('1-Crash Bug,no se puede cambiar de vista', async () =>{
+    it ('2-El historial de pedidos se cargan indefinidamente', async () =>{
+    
+        await $('//*[@id="ec_loginwidget-5"]/h4').scrollIntoView()
+
+        await (await $('//*[@id="ec_loginwidget-5"]/a[2]')).click()
+        
+        await $('//*[@id="ec_account_orders"]/div[2]/div[2]/span').click()
+    
+        await expect($('//*[@id="popmake-4406"]')).toBeDisplayedInViewport()
+        await $('//*[@id="popmake-4406"]/button').click()
+    }) 
+
+     it ('3-Crash Bug,no se puede cambiar de vista', async () =>{
       
         await $('//*[@id="ec_product_page"]/div[1]/span[1]/a[1]').click()
 
@@ -71,7 +83,7 @@ describe ('Pruebas de bugs - Main Suite', () => {
     
     }) 
      
-    it ('2-Agregar más de 2 items', async () =>{
+    it ('4-Agregar más de 2 items', async () =>{
 
         await $('#ec_add_to_cart_5').click()
 
@@ -83,7 +95,7 @@ describe ('Pruebas de bugs - Main Suite', () => {
 
     }) 
 
-    it('3-Está mal escrito Return the Store', async () =>{
+    it('5-Está mal escrito Return the Store', async () =>{
 
         await $('#ec_add_to_cart_27').click()  
         await $('//*[@id="ec_cartwidget-2"]/div/a/div').scrollIntoView()
@@ -104,7 +116,7 @@ describe ('Pruebas de bugs - Main Suite', () => {
     
     })
 
-   it('4-Tipo de cambio no funciona', async () =>{
+   it('6-Tipo de cambio no funciona', async () =>{
 
     await $('#ec_currency_conversion').click()
     await $('//*[@id="ec_currency_conversion"]/option[2]').click()
@@ -115,7 +127,7 @@ describe ('Pruebas de bugs - Main Suite', () => {
 
     }) 
 
-    it ('5-No abre link de compartir en Twitter', async () =>{
+    it ('7-No abre link de compartir en Twitter', async () =>{
 
         await $('//*[@id="ec_product_image_effect_dark-grey-jeans"]/a').click()
 
@@ -126,7 +138,7 @@ describe ('Pruebas de bugs - Main Suite', () => {
         await expect($('//*[@id="popmake-4406"]')).toBeDisplayedInViewport()
     }) 
 
-    it('6-No se puede publicar un comentario', async () =>{
+    it('8-No se puede publicar un comentario', async () =>{
         
         await $('//*[@id="ec_product_image_effect_bright-red-bag"]/a').click()
 
@@ -143,7 +155,7 @@ describe ('Pruebas de bugs - Main Suite', () => {
          await expect($('//*[@id="popmake-4406"]')).toBeDisplayedInViewport()
     }) 
 
-    it ('7-Enlace roto del fabricante', async () =>{
+    it ('9-Enlace roto del fabricante', async () =>{
 
         await $('//*[@id="ec_product_image_effect_blue-tshirt"]/a').click()
 
@@ -152,7 +164,7 @@ describe ('Pruebas de bugs - Main Suite', () => {
         await expect($('//*[@id="popmake-4406"]')).toBeDisplayedInViewport()
     })
 
-    it ('8-Descripción del producto no está en inglés', async () =>{
+    it ('10-Descripción del producto no está en inglés', async () =>{
 
         await $('//*[@id="ec_product_image_effect_bright-red-bag"]/a').click()
 
@@ -160,13 +172,9 @@ describe ('Pruebas de bugs - Main Suite', () => {
         await $('//*[@id="post-5540"]/div/section/div[2]/div/div').click()
 
         await expect($('//*[@id="popmake-4406"]')).toBeDisplayedInViewport()
-    
     }) 
 
-    
-    
-
-    it ('10-Elegir un color de ropa', async () =>{
+    it ('11-Elegir un color de ropa', async () =>{
 
         await $('//*[@id="ec_product_image_3061856"]/div[3]/h3/a').scrollIntoView()
 
@@ -187,15 +195,18 @@ describe ('Pruebas de bugs - Main Suite', () => {
         await expect($('#popmake-4406')).toExist()
     })
 
-    it ('11-', async () =>{
+    it ('12-Link de MySpace nunca se carga', async () =>{
 
-    
+        await  $('//*[@id="ec_product_image_effect_dnk-yellow-shoes"]/a').click()
+
+        await  $('//*[@id="post-1675"]/div/section/div[1]/div[3]/div[2]/div[7]/a/img').click()
+
+        await expect($('//*[@id="post-1829"]/div/p[1]/span')).toExist()
+
+          await  $('//*[@id="post-1829"]/div/p[1]/span').click()
+
+          await expect($('#popmake-4406')).toBeDisplayedInViewport()
     }) 
 
-
-    it ('12-', async () =>{
-
-    
-    }) 
 
 })

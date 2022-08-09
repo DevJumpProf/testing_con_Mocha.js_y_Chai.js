@@ -31,21 +31,5 @@ describe ('Pruebas de AcademyBugs', () => {
         await $('//*[@id="login-from-side-menu"]/div[6]/button').click()
     }) 
 
-  
-
-    /* it ('', async () =>{
-
-    
-    })  */
-
-   /*  it ('', async () =>{
-
-    
-    })  */
-
-    /* it ('', async () =>{
-
-    
-    })  */
 
 })

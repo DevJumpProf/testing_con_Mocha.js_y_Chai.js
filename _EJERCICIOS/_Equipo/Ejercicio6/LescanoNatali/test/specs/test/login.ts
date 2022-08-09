@@ -4,7 +4,7 @@ describe('Pruebas de Store - Main Suite', () => {
       await browser.url('https://www.demoblaze.com/index.html')
     })
 
-    it.only ('Debería de registrarse correctamente', async () => {
+    it('Debería de registrarse correctamente', async () => {
 
       await $('#signin2').click()
       await $('#sign-username').setValue('natalilesc')
@@ -13,14 +13,14 @@ describe('Pruebas de Store - Main Suite', () => {
 
   })
 
-    it.only('Debería loguearse correctamente', async () => {
+    it('Debería loguearse correctamente', async () => {
       
         await $('//*[@id="login2"]').click()
-        await $('//*[@id="loginusername"]').setValue('natali')
+        await $('//*[@id="loginusername"]').setValue('natalilesc')
         await $('//*[@id="loginpassword"]').setValue('natalilesc43')
         await $('//*[@id="logInModal"]/div/div/div[3]/button[2]').click()
 
-        await expect ($('//*[@id="nameofuser"]')).toHaveTextContaining('Welcome')
+        await expect($('#nameofuser')).toHaveTextContaining('Welcome')
         /* Esperar que tenga un atributo el elemento */
         /* await expect($('#nameofuser')).toHaveAttribute('class') */
     })
@@ -47,14 +47,4 @@ describe('Pruebas de Store - Main Suite', () => {
 
     })
 
-     /* it('Deberia desloguearse', async () => {
-      await $('//*[@id="navbarExample"]/ul/li[1]/a').click()
-      await $('#logout2').click()
-        
-     }) */
-
-
-   /*  it('', async () => {
-        
-    })  */
-})
+  })
