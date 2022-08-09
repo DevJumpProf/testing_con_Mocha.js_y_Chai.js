@@ -53,8 +53,8 @@ describe('Otras pruebas - Main suite', () => {
 
     
 
-    it('Propiedad deL elemento', async () => {
-        await expect($('//*[@id="fotcont"]/div[1]/div/div/p')).toHaveElementProperty('margin-top', 0) 
+    it('Propiedad del elemento', async () => {
+        await expect($('//*[@id="nava"]/img')).toHaveElementProperty('height', 50) 
     })
 
 
@@ -62,7 +62,7 @@ describe('Otras pruebas - Main suite', () => {
         await expect($('//*[@id="navbarExample"]/ul/li[1]/a')).toBeClickable() 
     })
 
-    it('Prueba para mostrarse en una ventana gráfica', async () => {
+    it ('Prueba para mostrarse en una ventana gráfica', async () => {
 
         await expect($('//*[@id="login2"]')).toBeDisplayedInViewport()
     })
@@ -78,14 +78,15 @@ describe('Otras pruebas - Main suite', () => {
                                                             /* gte: mayor o igual */
 }) 
 
-it ('Prueba para verificar cuantos elementos  tiene la página', async () => {
+     it ('Prueba para verificar cuantos elementos  tiene la página', async () => {
 
-    /* await expect($('a')).toBeElementsArrayOfSize({ lte: 43 }) */
-                                                         /* lte: menor o igual */
-    await expect($('a')).toBeElementsArrayOfSize(33)
+        /* $$ colección de elementos */
+     await expect($$('div')).toBeElementsArrayOfSize({ lte: 140 }) 
+                                                         /* lte: menor  */
+    await expect($$('div')).toBeElementsArrayOfSize(129)
 
-    await expect($('a')).toBeElementsArrayOfSize({ gte: 30 })
-                                                        /* gte: mayor o igual */
+    await expect($$('div')).toBeElementsArrayOfSize({ gte: 128 }) 
+                                                        /* gte: mayor  */  
 }) 
     })
     
