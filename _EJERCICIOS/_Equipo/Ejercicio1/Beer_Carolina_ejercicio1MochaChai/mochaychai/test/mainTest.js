@@ -20,7 +20,7 @@ describe("Main Suite", () =>{
     describe("Hola Mundo-Test",()=>{ 
 
         it ("Coincidencia de Texto", ()=>{
-            assert.equal(textoHolaMundo, "Holaa Mundo", "Debe ser igual el string: Hola Mundo");//mensaje 
+            assert.equal(textoHolaMundo, "Holaa Mundo", "Debe ser igual el string: Hola Mundo");//mensaje //prueba error
         })  
 
         it ("Coincidencia tipo de Dato", ()=>{
@@ -32,7 +32,7 @@ describe("Main Suite", () =>{
     describe("Resultado Resta-Test",()=>{
 
         it ("Menor a 5", ()=>{
-            assert.isBelow(resultadoResta, 5, "El resultado no es menor a 5");//mensaje 
+            assert.isBelow(resultadoResta, 5, "El resultado no es menor a 5");//mensaje    //interfaces chai
         });
         
         it ("Coincidencia tipo de Dato", ()=>{
