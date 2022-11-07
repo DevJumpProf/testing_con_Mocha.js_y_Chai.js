@@ -1,159 +1,326 @@
-<img  src='./img/logo.png'  height='70px'>
+Promesa
+Imagina que eres un gran cantante y los fanáticos te preguntan día y noche por tu próxima canción.
 
-* Glosario Gral
+Para obtener algo de alivio, prometes enviárselos cuando se publique. Le das a tus fans una lista. Ellos pueden registrar allí sus direcciones de correo electrónico, de modo que cuando la canción esté disponible, todas las partes suscritas la reciban instantáneamente. E incluso si algo sale muy mal, digamos, un incendio en el estudio tal que no puedas publicar la canción, aún se les notificará.
 
-## A
+Todos están felices: tú, porque la gente ya no te abruma, y los fanáticos, porque no se perderán la canción.
 
-Algoritmo: Consiste en todos los pasos y tareas que realizará una aplicación mientras
-se ejecuta.
+Esta es una analogía de la vida real para las cosas que a menudo tenemos en la programación:
 
-## B
+Un “código productor” que hace algo y toma tiempo. Por ejemplo, algún código que carga los datos a través de una red. Eso es un “cantante”.
+Un “código consumidor” que quiere el resultado del “código productor” una vez que está listo. Muchas funciones pueden necesitar ese resultado. Estos son los “fans”.
+Una promesa es un objeto JavaScript especial que une el “código productor” y el “código consumidor”. En términos de nuestra analogía: esta es la “lista de suscripción”. El “código productor” toma el tiempo que sea necesario para producir el resultado prometido, y la “promesa” hace que ese resultado esté disponible para todo el código suscrito cuando esté listo.
+La analogía no es terriblemente precisa, porque las promesas de JavaScript son más complejas que una simple lista de suscripción: tienen características y limitaciones adicionales. Pero está bien para empezar.
 
-Back- End: Es la parte de una aplicación que es invisible para el usuario pero que
-realiza diversas funciones y es fundamental para el funcionamiento de la misma.
+La sintaxis del constructor para un objeto promesa es:
 
-Biblioteca: Estructura que contiene un conjunto de códigos, paquetes, clases, etc.
+let promise = new Promise(function(resolve, reject) {
+  // Ejecutor (el código productor, "cantante")
+});
+La función pasada a new Promise se llama ejecutor. Cuando se crea new Promise, el ejecutor corre automáticamente. Este contiene el código productor que a la larga debería producir el resultado. En términos de la analogía anterior: el ejecutor es el “cantante”.
 
-BUG: Es un error o fallo que se produce en un software o sistema.
+Sus argumentos resolve y reject son callbacks proporcionadas por el propio JavaScript. Nuestro código solo está dentro del ejecutor.
 
-## C
+Cuando el ejecutor, más tarde o más temprano, eso no importa, obtiene el resultado, debe llamar a una de estos callbacks:
 
-Clase: Representación de un conjunto de objetos similares.
+resolve(value) – si el trabajo finalizó con éxito, con el resultado value.
+reject(error) – si ocurrió un error, error es el objeto error.
+Para resumir: el ejecutor corre automáticamente e intenta realizar una tarea. Cuando termina con el intento, llama a resolve si fue exitoso o reject si hubo un error.
 
-Clase base: Sinónimo de Subclase (la clase hija; la clase que implementará a partir de
-la implementación de otra).
+El objeto promise devuelto por el constructor new Promise tiene estas propiedades internas:
 
-Clientes: Son dispositivos informáticos que solicitan información o servicios a los
-Servidores.
+state – inicialmente "pendiente"; luego cambia a "cumplido" cuando se llama a resolve, o a "rechazado" cuando se llama a reject.
+result – inicialmente undefined; luego cambia a valor cuando se llama a resolve(valor), o a error cuando se llama a reject(error).
+Entonces el ejecutor, en algún momento, pasa la promise a uno de estos estados:
 
-Cloud Computing: Consiste en servicios de computación en la nube, donde los
-recursos informáticos se alquilan en un centro de datos, siendo mucho más barato y
-viable que tener una estructura propia para procesar la información.
 
-Commit: Consiste en terminar una parte de un trabajo o un código y guardarlo para
-no perderlo.
+Después veremos cómo los “fanáticos” pueden suscribirse a estos cambios.
 
-Compilar: Es el proceso de convertir un programa hecho en un lenguaje de alto nivel a
-un lenguaje de bajo nivel.
+Aquí hay un ejemplo de un constructor de promesas y una función ejecutora simple con “código productor” que toma tiempo (a través de setTimeout):
 
-Consola: Zona del escritorio en la pantalla del ordenador donde se puede trabajar en
-la línea de comandos.
+let promise = new Promise(function(resolve, reject) {
+  // la función se ejecuta automáticamente cuando se construye la promesa
 
-Construcción: La "construcción" suele ser el proceso de compilación y enlace
-respectivamente, y el resultado de la construcción es un archivo ejecutable en una
-plataforma determinada.
+  // después de 1 segundo, indica que la tarea está hecha con el resultado "hecho"
+  setTimeout(() => resolve("hecho"), 1000);
+});
+Podemos ver dos cosas al ejecutar el código anterior:
 
-Concatenar: unir dos o más cadenas de caracteres.
+Se llama al ejecutor de forma automática e inmediata (por new Promise).
 
-## D
+El ejecutor recibe dos argumentos: resolve y reject. Estas funciones están predefinidas por el motor de JavaScript, por lo que no necesitamos crearlas. Solo debemos llamar a uno de ellos cuando esté listo.
 
-Depuración: El proceso de encontrar y eliminar fallos en el software o el hardware.
-Desarrollador: Consiste en la persona que realiza el desarrollo o mantenimiento de
-una aplicación.
+Después de un segundo de “procesamiento”, el ejecutor llama a resolve("hecho") para producir el resultado. Esto cambia el estado del objeto promise:
 
-Directorio: Consiste en una carpeta en un ordenador o dispositivo.
 
-## E
+Ese fue un ejemplo de finalización exitosa de la tarea, una “promesa cumplida”.
 
-Evento: Algo que ocurrió dentro de una clase y desencadenó una funcionalidad.
+Y ahora un ejemplo del ejecutor rechazando la promesa con un error:
 
-## F
+let promise = new Promise(function(resolve, reject) {
+  // después de 1 segundo, indica que la tarea ha finalizado con un error
+  setTimeout(() => reject(new Error("¡Vaya!")), 1000);
+});
+La llamada a reject(...) mueve el objeto promise al estado "rechazado":
 
-Front-End: La parte de una aplicación que es visible para el usuario.
 
-Full-Stack: Desarrollador que puede trabajar tanto en el desarrollo Back-end como
-Front-end de una aplicación web.
+Para resumir, el ejecutor debe realizar una tarea (generalmente algo que toma tiempo) y luego llamar a “resolve” o “reject” para cambiar el estado del objeto promise correspondiente.
 
-## G
+Una promesa que se resuelve o se rechaza se denomina “resuelta”, en oposición a una promesa inicialmente “pendiente”.
 
-Git: es un sistema de control de versiones distribuido, utilizado principalmente en el
-desarrollo de software, que mantiene el historial y el seguimiento de las alteraciones y
-revisiones de los códigos de los programas.
+Solo puede haber un único resultado, o un error
+El ejecutor debe llamar solo a un ‘resolve’ o un ‘reject’. Cualquier cambio de estado es definitivo.
 
-## H
+Se ignoran todas las llamadas adicionales de ‘resolve’ y ‘reject’:
 
-Hardware: Consiste en todas las partes físicas de un dispositivo, que podemos tocar,
-por ejemplo: memoria, procesador, ratón y teclado de un ordenador.
+let promise = new Promise(function(resolve, reject) {
+  resolve("hecho");
 
-Herencia: capacidad de heredar las características de otra clase.
+  reject(new Error("…")); // ignorado
+  setTimeout(() => resolve("…")); // ignorado
+});
+La idea es que una tarea realizada por el ejecutor puede tener solo un resultado o un error.
 
-## I
+Además, resolve/reject espera solo un argumento (o ninguno) e ignorará argumentos adicionales.
 
-IDE: Entorno de Desarrollo Integrado. Es un programa informático que reúne
-características y herramientas de apoyo al desarrollo de software para agilizar este
-proceso. Ejemplos: Eclipse, Visual Studio Code, Android Studio, Brackets, Atom,
-Sublime, etc.
+Rechazar con objetos Error
+En caso de que algo salga mal, el ejecutor debe llamar a ‘reject’. Eso se puede hacer con cualquier tipo de argumento (al igual que resolve). Pero se recomienda usar objetos Error (u objetos que hereden de Error). El razonamiento para eso pronto se hará evidente.
 
-Indentación: La indentación es la sangría (espacios utilizando TAB) en el texto de un
-código que se utiliza para organizar visualmente y mejorar la legibilidad.
+Inmediatamente llamando a resolve/reject
+En la práctica, un ejecutor generalmente hace algo de forma asíncrona y llama a resolve/reject después de un tiempo, pero no está obligado a hacerlo así. También podemos llamar a resolve o reject inmediatamente:
 
-Instancia: La ejecución de una clase.
+let promise = new Promise(function(resolve, reject) {
+  // sin que nos quite tiempo para hacer la tarea
+  resolve(123); // dar inmediatamente el resultado: 123
+});
+Por ejemplo, esto puede suceder cuando comenzamos una tarea, pero luego vemos que todo ya se ha completado y almacenado en caché.
 
-Iteración: Es el nombre que reciben las estructuras que repiten el mismo bloque de
-código durante un número finito de veces o mientras una condición sea verdadera,
-también conocido como bucle.
+Está bien. Inmediatamente tenemos una promesa resuelta.
 
-## L
+state y result son internos
+Las propiedades state y result del objeto Promise son internas. No podemos acceder directamente a ellas. Podemos usar los métodos .then/.catch/.finally para eso. Se describen a continuación.
 
-Lenguaje de alto nivel: Lenguaje de programación orientado al entendimiento
-humano que no puede ser interpretado directamente por la máquina.
+Consumidores: then y catch
+Un objeto Promise sirve como enlace entre el ejecutor (el “código productor” o el “cantante”) y las funciones consumidoras (los “fanáticos”), que recibirán un resultado o un error. Las funciones de consumo pueden registrarse (suscribirse) utilizando los métodos .then y .catch.
 
-Lenguaje de bajo nivel: Es un lenguaje dirigido a la comprensión y ejecución de un
-programa por parte de la máquina, este tipo de lenguaje tiene una mayor dificultad de
-comprensión humana.
+then
+El más importante y fundamental es .then.
 
-## M
+La sintaxis es:
 
-Marco: Es un conjunto de códigos genéricos capaces de facilitar un proyecto de
-desarrollo.
+promise.then(
+  function(result) { /* manejar un resultado exitoso */ },
+  function(error) { /* manejar un error */ }
+);
+El primer argumento de .then es una función que se ejecuta cuando se resuelve la promesa y recibe el resultado.
 
-Miembro de la clase: puede ser una función, o una propiedad (variable).
+El segundo argumento de .then es una función que se ejecuta cuando se rechaza la promesa y recibe el error.
 
-## O
+Por ejemplo, aquí hay una reacción a una promesa resuelta con éxito:
 
-Objeto: La ejecución de una clase.
+let promise = new Promise(function(resolve, reject) {
+  setTimeout(() => resolve("hecho!"), 1000);
+});
 
-## P
+// resolve ejecuta la primera función en .then
+promise.then(
+  result => alert(result), // muestra "hecho!" después de 1 segundo
+  error => alert(error) // no se ejecuta
+);
+La primera función fue ejecutada.
 
-Paquete: Estructura que contiene un conjunto de códigos para ser utilizados por otros
-programadores. En Java, las clases se organizan a través de paquetes.
+Y en el caso de un rechazo, el segundo:
 
-Parent-Class: Sinónimo de Superclase (la clase padre; clase que se extiende).
+let promise = new Promise(function(resolve, reject) {
+  setTimeout(() => reject(new Error("Vaya!")), 1000);
+});
 
-Polimorfismo: Capacidad de tener funciones con el mismo nombre y firma, pero con
-comportamientos diferentes.
+// reject ejecuta la segunda función en .then
+promise.then(
+  result => alert(result), // no se ejecuta
+  error => alert(error) // muestra "Error: ¡Vaya!" después de 1 segundo
+);
+Si solo nos interesan las terminaciones exitosas, entonces podemos proporcionar solo un argumento de función para .then:
 
-Propiedad: Característica del objeto y en programación, se representa mediante una
-variable.
+let promise = new Promise(resolve => {
+  setTimeout(() => resolve("hecho!"), 1000);
+});
 
-## R
+promise.then(alert); // muestra "hecho!" después de 1 segundo
+catch
+Si solo nos interesan los errores, entonces podemos usar null como primer argumento: .then(null, errorHandlingFunction). O podemos usar .catch(errorHandlingFunction), que es exactamente lo mismo:
 
-Refactorización: Reescribir el mismo trozo de código para que haga la misma
-función, pero de forma que sea más fácil de entender, aprovechar nuevos servicios y
-optimizaciones de forma tal que mejoren su desempeño y mantenimiento.
+let promise = new Promise((resolve, reject) => {
+  setTimeout(() => reject(new Error("Vaya!")), 1000);
+});
 
-## S
+// .catch(f) es lo mismo que promise.then(null, f)
+promise.catch(alert); // muestra "Error: ¡Vaya!" después de 1 segundo
+La llamada .catch(f) es un análogo completo de .then(null, f), es solo una abreviatura.
 
-Servidor: Consiste en un ordenador o dispositivo que permite el acceso a información
-o servicios a quien lo solicite, previa autenticación de la identidad y validación de
-permisos.
+Limpieza: finally
+Al igual que hay una cláusula finally en un try {...} catch {...} normal, hay un finally en las promesas.
 
-Software: Toda la parte lógica de un sistema que podemos ver pero no tocar, por
-ejemplo la aplicación de la calculadora, el navegador de Internet, etc.
+La llamada .finally(f) es similar a .then(f, f) en el sentido de que f siempre se ejecuta cuando se resuelve la promesa: ya sea que se resuelva o rechace.
 
-Stack Overflow: es un sitio de preguntas y respuestas para profesionales y
-aficionados a la programación informática, https://es.stackoverflow.com/ .
+La idea de finally es establecer un manejador para realizar la limpieza y finalización después de que las operaciones se hubieran completado.
 
-Subclase: La clase hija; la clase que implementará a partir de la implementación de
-otra.
+Por ejemplo, detener indicadores de carga, cerrar conexiones que ya no son necesarias, etc.
 
-Superclase: La clase padre; clase que se extiende.
+Puedes pensarlo como el finalizador de la fiesta. No importa si la fiesta fue buena o mala ni cuántos invitados hubo, aún necesitamos (o al menos deberíamos) hacer la limpieza después.
 
-## T
+El código puede verse como esto:
 
-Tipificado: En programación, tipificado significa una variable o algún valor que tiene
-un tipo predeterminado (numérico, texto, lógico, etc.).
+new Promise((resolve, reject) => {
+  /* hacer algo para tomar tiempo y luego llamar a resolve o reject */
+})
+  // se ejecuta cuando se cumple la promesa, no importa con éxito o no
+  .finally(() => stop loading indicator)
+  // así el indicador de carga siempre es detenido antes de que sigamos adelante
+  .then(result => show result, err => show error)
+Sin embargo, note que finally(f) no es exactamente un alias dethen(f, f)`.
 
-## U
-Usuario: La persona que utiliza el servicio o la aplicación que ha sido desarrollada por
-un Desarrollador
+Hay diferencias importantes: `
+
+Un manejador finally no tiene argumentos. En finally no sabemos si la promesa es exitosa o no. Eso está bien, ya que usualmente nuestra tarea es realizar procedimientos de finalización “generales”.
+
+Por favor observe el ejemplo anterior: como puede ver, el manejador de finally no tiene argumentos, y lo que sale de la promesa es manejado en el siguiente manejador.
+
+Resultados y errores pasan “a través” del manejador de finally. Estos pasan al siguiente manejador que se adecúe.
+
+Por ejemplo, aquí el resultado se pasa a través de finally a then:
+
+new Promise((resolve, reject) => {
+  setTimeout(() => resolve("valor"), 2000)
+})
+  .finally(() => alert("Promesa lista")) // se dispara primero
+  .then(result => alert(result)); // <-- .luego muestra "valor"
+Como puede ver, el “valor” devuelto por la primera promesa es pasado a través de finally al siguiente then.
+
+Esto es muy conveniente, porque finally no está destinado a procesar el resultado de una promesa. Como dijimos antes, es el lugar para hacer la limpieza general sin importar cuál haya sido el resultado.
+
+Y aquí, el ejemplo de un error para que veamos cómo se pasa, a través de finally, a catch:
+
+new Promise((resolve, reject) => {
+  throw new Error("error");
+})
+  .finally(() => alert("Promesa lista"))  // primero dispara
+  .catch(err => alert(err));  // <-- .catch muestra el error
+Un manejador de finally tampoco debería devolver nada. Y si lo hace, el valor devuelto es ignorado silenciosamente.
+
+La única excepción a esta regla se da cuando el manejador mismo de finally dispara un error. En ese caso, este error pasa al siguiente manejador de error en lugar del resultado previo al finally.
+
+Para summarizar:
+
+Un manejador finally no obtiene lo que resultó del manejador previo (no tiene argumentos). Ese resultado es pasado a través de él al siguiente manejador.
+Si el manejador de finally devuelve algo, será ignorado.
+Cuando es finally el que dispara el error, la ejecución pasa al manejador de error más cercano.
+Estas características son de ayuda y hacen que las cosas funcionen tal como corresponde si “finalizamos” con finally como se supone: con procedimientos de limpieza genéricos.
+
+Podemos adjuntar manejadores a promesas ya establecidas
+Si una promesa está pendiente, los manejadores .then/catch/finally esperan por su resolución.
+
+Podría pasar a veces que, cuando agregamos un manejador, la promesa ya se encuentre establecida.
+
+Em tal caso, estos manejadores simplemente se ejecutarán de inmediato:
+
+// la promesa se resuelve inmediatamente después de la creación
+let promise = new Promise(resolve => resolve("hecho!"));
+
+promise.then(alert); // ¡hecho! (aparece ahora)
+Ten en cuenta que esto es diferente y más poderoso que el escenario de la “lista de suscripción” de la vida real. Si el cantante ya lanzó su canción y luego una persona se registra en la lista de suscripción, probablemente no recibirá esa canción. Las suscripciones en la vida real deben hacerse antes del evento.
+
+Las promesas son más flexibles. Podemos agregar manejadores en cualquier momento: si el resultado ya está allí, nuestros manejadores lo obtienen de inmediato.
+
+Ejemplo: loadScript
+A continuación, veamos ejemplos más prácticos de cómo las promesas pueden ayudarnos a escribir código asincrónico.
+
+Tenemos, del capítulo anterior, la función loadScript para cargar un script.
+
+Aquí está la variante basada callback, solo para recordarnos:
+
+function loadScript(src, callback) {
+  let script = document.createElement('script');
+  script.src = src;
+
+  script.onload = () => callback(null, script);
+  script.onerror = () => callback(new Error(`Error de carga de script para $ {src}`));
+
+  document.head.append(script);
+}
+Reescribámoslo usando Promesas.
+
+La nueva función loadScript no requerirá una callback. En su lugar, creará y devolverá un objeto Promise que se resuelve cuando se completa la carga. El código externo puede agregar manejadores (funciones de suscripción) usando .then:
+
+function loadScript(src) {
+  return new Promise(function(resolve, reject) {
+    let script = document.createElement('script');
+    script.src = src;
+
+    script.onload = () => resolve(script);
+    script.onerror = () => reject(new Error(`Error de carga de script para $ {src}`));
+
+    document.head.append(script);
+  });
+}
+Uso:
+
+let promise = loadScript("https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.11/lodash.js");
+
+promise.then(
+  script => alert(`${script.src} está cargado!`),
+  error => alert(`Error: ${error.message}`)
+);
+
+promise.then(script => alert('Otro manejador...'));
+Podemos ver inmediatamente algunos beneficios sobre el patrón basado en callback:
+
+Promesas	Callbacks
+Las promesas nos permiten hacer las cosas en el orden natural. Primero, ejecutamos loadScript (script), y .then escribimos qué hacer con el resultado.	Debemos tener una función callback a nuestra disposición al llamar a ‘loadScript(script, callback)’. En otras palabras, debemos saber qué hacer con el resultado antes de llamar a loadScript.
+Podemos llamar a “.then” en una promesa tantas veces como queramos. Cada vez, estamos agregando un nuevo “fan”, una nueva función de suscripción, a la “lista de suscripción”. Más sobre esto en el próximo capítulo: Encadenamiento de promesas.	Solo puede haber un callback.
+Entonces, las promesas nos dan un mejor flujo de código y flexibilidad. Pero hay más. Lo veremos en los próximos capítulos.
+
+Tareas
+¿Volver a resolver una promesa?
+¿Cuál es el resultado del código a continuación?
+
+let promise = new Promise(function(resolve, reject) {
+  resolve(1);
+
+  setTimeout(() => resolve(2), 1000);
+});
+
+promise.then(alert);
+solución
+La salida es: 1.
+
+La segunda llamada a ‘resolve’ se ignora, porque solo se tiene en cuenta la primera llamada de ‘reject/resolve’. Otras llamadas son ignoradas.
+
+
+Demora con una promesa
+La función incorporada setTimeout utiliza callbacks. Crea una alternativa basada en promesas.
+
+La función delay(ms) debería devolver una promesa. Esa promesa debería resolverse después de ms milisegundos, para que podamos agregarle .then, así:
+
+function delay(ms) {
+  // tu código
+}
+
+delay(3000).then(() => alert('se ejecuta después de 3 segundos'));
+solución
+Círculo animado con promesa
+Vuelva a escribir la función showCircle en la solución de la tarea Círculo animado con función de callback para que devuelva una promesa en lugar de aceptar un callback.
+
+Nueva forma de uso:
+
+showCircle(150, 150, 100).then(div => {
+  div.classList.add('message-ball');
+  div.append("Hola, mundo!");
+});
+Tome la solución de la tarea Círculo animado con función de callback como base.
+
+solución
+Abrir la solución en un entorno controlado.
+
+
+Comentarios
